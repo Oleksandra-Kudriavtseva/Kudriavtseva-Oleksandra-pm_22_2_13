@@ -1,0 +1,44 @@
+.add-project-btn {
+  color: white;
+  font-size: 14px;
+  height: 50px;
+  width: 225px;
+  background: -webkit-linear-gradient(#e685f2, #9572f7);
+  margin-bottom: 10px;
+}
+
+.project-input {
+  font-size: 14px;
+  height: 50px;
+  width: 225px;
+  margin-bottom: 10px;
+}
+
+.add-project-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.list-group-item {
+  width: 225px;
+}
+
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.add-project-form {
+  width: 225px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}

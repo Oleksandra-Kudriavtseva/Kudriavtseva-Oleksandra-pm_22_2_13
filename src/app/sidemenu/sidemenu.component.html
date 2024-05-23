@@ -1,0 +1,97 @@
+<div class="sidebar" style="width:280px; height:100vh">
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <img src="assets/img/Layer 608@4x.png" class="rounded-circle img-responsive position-relative top-50 start-50 translate-middle" style="width:50px;height:50px" alt="...">
+        </div>
+        <div class="col-7">
+          <div class="row h-50"><b>David Grey H.</b></div>
+          <div class="row h-50"><p class="text-black-50 fs-6">Project Manager</p></div>
+        </div>
+        <div class="col">
+          <img src="assets/img/bookmark.png" class="img-responsive my-auto" style="width:15px;height:15px" alt="...">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <ol class="list-group">
+      <div *ngFor="let menuItem of menuList">
+        <li class="list-group-item d-flex justify-content-between align-items-start border-0 mt-3">
+          <p>{{ menuItem.text }}</p>
+          <img [src]="menuItem.image" alt="Menu Image" style="width: 15px; height: 15px;">
+        </li>
+      </div>
+
+      <li class="list-group-item d-flex justify-content-between align-items-start border-0 mt-3">
+        <div class="me-auto">
+          <div>Sample Pages</div>
+        </div>
+        <img src="assets/img/smaller.png" class="img-responsive my-auto mx-2" style="width:7px;height:10px" alt="...">
+        <img src="assets/img/plus.png" class="img-responsive my-auto" style="width:15px;height:15px" alt="...">
+      </li>
+    </ol>
+  </div>
+
+  <div class="bg-white mt-5">
+    <span class="mx-3">Project</span>
+    <hr class="bg-dark mx-auto" style="width:225px">
+    <ul id="projectlist" class="list-group"></ul>
+    <div style="display:none" id="addproject" class="form-floating mb-3">
+      <input class="form-control" id="floatingInput" placeholder="projectname">
+      <label for="floatingInput">Project name</label>
+    </div>
+
+
+    <div id="addproject" class="mt-3 add-project-form" *ngIf="showAddProjectForm">
+      <input type="text" [(ngModel)]="newProjectName"
+             class="form-control project-input"
+             placeholder="Enter project name">
+      <button (click)="addProject()"
+              class="btn btn-primary mt-2 add-project-btn">Add Project</button>
+    </div>
+
+    <button (click)="toggleAddProject()"
+            class="btn add-project-btn "
+            type="button">
+      {{ showAddProjectForm ? 'Close Form' : '+ Add a Project' }}
+    </button>
+
+    <ul id="projectlist" class="list-group mt-3">
+      <li *ngFor="let project of projectList" class="list-group-item">{{ project }}</li>
+    </ul>
+
+
+    <hr class="bg-dark mx-auto" style="width:225px">
+
+
+
+
+
+
+
+
+
+
+  <div class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-start border-0 mt-3">
+      <div class="me-auto">
+        <div class="text-black-50">Categories</div>
+      </div>
+    </li>
+    <div class="form-check mx-3 my-3">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Friends
+      </label>
+    </div>
+    <div class="form-check mx-3 my-2">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+      <label class="form-check-label" for="flexRadioDefault2">
+        Pro
+      </label>
+    </div>
+  </div>
+</div>

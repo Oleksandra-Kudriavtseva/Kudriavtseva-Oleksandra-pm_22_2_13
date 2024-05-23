@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {TopmenuComponent} from "./topmenu/topmenu.component";
+import {TopMenuComponent} from "./topmenu/topmenu.component";
 import {SidemenuComponent} from "./sidemenu/sidemenu.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {StatisticsComponent} from "./statistics/statistics.component";
@@ -10,11 +10,13 @@ import {TicketsComponent} from "./tickets/tickets.component";
 import {UpdatesComponent} from "./updates/updates.component";
 import {StatusComponent} from "./status/status.component";
 import {BottomComponent} from "./bottom/bottom.component";
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TopmenuComponent, SidemenuComponent,DashboardComponent, StatisticsComponent, StatisticsGraphComponent,CircularGraphComponent, TicketsComponent, UpdatesComponent,StatusComponent, BottomComponent],
+  imports: [RouterOutlet, TopMenuComponent, SidemenuComponent,DashboardComponent, StatisticsComponent, StatisticsGraphComponent,CircularGraphComponent, TicketsComponent, UpdatesComponent,StatusComponent, BottomComponent, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

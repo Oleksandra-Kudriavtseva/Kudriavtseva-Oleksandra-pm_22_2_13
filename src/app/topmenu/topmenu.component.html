@@ -1,0 +1,129 @@
+<nav class="navbar navbar-expand-lg bg-white">
+  <div class="container-fluid">
+    <a class="navbar-brand text-purple bi-stack mx-4" style="color:purple; font-size:32px; background: -webkit-linear-gradient(left,#e685f2,#9572f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight:900" href="#">Purple</a>
+    <div class="navbar-collapse" id="navbarSupportedContent">
+      <form class="d-flex align-items-center mx-5" role="search">
+        <img src="assets/img/search.png" class="img-responsive my-auto" style="width:15px;height:15px" alt="...">
+        <input class="form-control me-2 border-0" type="search" placeholder="Search project" aria-label="Search">
+      </form>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-2">
+          <img src="assets/img/Layer 608@4x.png" class="rounded-circle img-responsive" style="width:50px;height:50px" alt="...">
+        </li>
+        <li class="nav-item dropdown" (click)="toggleDropdown()">
+          <a class="nav-link dropdown-toggle" href="#" role="button" [attr.aria-expanded]="isDropdownOpen ? 'true' : 'false'">
+            David Grey.H
+          </a>
+          <ul class="dropdown-menu" [class.show]="isDropdownOpen">
+            <li><a class="dropdown-item" href="#" (click)="selectForm('template')">Template-Driven Form</a></li>
+            <li><a class="dropdown-item" href="#" (click)="selectForm('reactive')">Reactive Form</a></li>
+          </ul>
+        </li>
+        <li class="nav-item mx-4">
+          <img src="assets/img/square.png" class="img-responsive my-auto" style="width:15px;height:15px" alt="...">
+        </li>
+        <li class="nav-item mx-4 position-relative">
+          <img src="assets/img/mail.png" class="img-responsive my-auto" style="width:15px;height:15px" alt="...">
+          <span class="position-absolute top-0 start-100 translate-middle p-2 bg-warning rounded-circle">
+            <span class="visually-hidden">New alerts</span>
+          </span>
+        </li>
+        <li class="nav-item mx-4 position-relative">
+          <img src="assets/img/bell.png" class="img-responsive my-auto" style="width:15px;height:15px" alt="...">
+          <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger rounded-circle">
+            <span class="visually-hidden">New alerts</span>
+          </span>
+        </li>
+        <li class="nav-item mx-4">
+          <img src="assets/img/power.png" class="img-responsive my-auto" style="width:15px;height:15px" alt="...">
+        </li>
+        <li class="nav-item mx-4">
+          <img src="assets/img/list1.png" class="img-responsive my-auto" style="width:15px;height:15px" alt="...">
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div *ngIf="selectedForm === 'template'">
+  <div class="modal-backdrop show"></div>
+  <div class="modal d-block" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Template-Driven Form</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+          <form #templateForm="ngForm" (ngSubmit)="onSubmitTemplate(templateForm)">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" class="form-control" name="name" ngModel required>
+              <div *ngIf="templateForm.submitted && !templateForm.controls['name']?.valid" class="text-danger">
+                Name is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" class="form-control" name="email" ngModel required email>
+              <div *ngIf="templateForm.submitted && !templateForm.controls['email']?.valid" class="text-danger">
+                Valid email is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" id="password" class="form-control" name="password" ngModel required minlength="6">
+              <div *ngIf="templateForm.submitted && !templateForm.controls['password']?.valid" class="text-danger">
+                Password is required (min 6 characters).
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!templateForm.valid">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="selectedForm === 'reactive'">
+  <div class="modal-backdrop show"></div>
+  <div class="modal d-block" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Reactive Form</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="reactiveForm" (ngSubmit)="onSubmitReactive()">
+            <div class="mb-3">
+              <label for="reactiveName" class="form-label">Name</label>
+              <input type="text" id="reactiveName" class="form-control" formControlName="name">
+              <div *ngIf="reactiveForm.controls['name'].invalid && (reactiveForm.controls['name'].dirty || reactiveForm.controls['name'].touched)" class="text-danger">
+                Name is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="reactiveEmail" class="form-label">Email</label>
+              <input type="email" id="reactiveEmail" class="form-control" formControlName="email">
+              <div *ngIf="reactiveForm.controls['email'].invalid && (reactiveForm.controls['email'].dirty || reactiveForm.controls['email'].touched)" class="text-danger">
+                Valid email is required.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="reactivePassword" class="form-label">Password</label>
+              <input type="password" id="reactivePassword" class="form-control" formControlName="password">
+              <div *ngIf="reactiveForm.controls['password'].invalid && (reactiveForm.controls['password'].dirty || reactiveForm.controls['password'].touched)" class="text-danger">
+                Password is required (min 6 characters).
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="reactiveForm.invalid">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
